@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import './App.css'
+import Person from './components/Person'
+import data from './data'
 
 function App() {
+  const [people, setPeople] = useState(data)
+  const handleButtonClick = (e) => {
+    e.preventDefault()
+    setPeople([])
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="card">
+        <h2 className="header">You have {people.length} birthdays today</h2>
+        <div>
+          {people.map((item, index) => (
+            <div key={index}>
+              <Person name={item.name} age={item.age} picture={item.image} />
+            </div>
+          ))}
+        </div>
+        <button className="button">
+          <p className="buttonText" onClick={(e) => handleButtonClick(e)}>
+            Clear All
+          </p>
+        </button>
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
