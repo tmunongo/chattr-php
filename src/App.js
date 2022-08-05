@@ -1,9 +1,12 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Person from './components/Person'
 import data from './data'
 
 function App() {
+  useEffect(() => {
+    document.title = 'Birthday Reminder App'
+  })
   const [people, setPeople] = useState(data)
   const handleButtonClick = (e) => {
     e.preventDefault()
@@ -20,7 +23,7 @@ function App() {
             </div>
           ))}
         </div>
-        <button className="button">
+        <button data-testid="clear" className="button">
           <p className="buttonText" onClick={(e) => handleButtonClick(e)}>
             Clear All
           </p>

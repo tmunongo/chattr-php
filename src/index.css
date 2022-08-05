@@ -32,6 +32,7 @@
   margin: 0 35%;
   min-height: 80vh;
   padding: 24px;
+  transition: all 0.5s;
   z-index: 10;
 }
 
