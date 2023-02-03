@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&dsiplay=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #fff;
+}
+.wrapper {
+  width: 450px;
+  border-radius: 23px;
+  background: #e4e4e4;
+  box-shadow: 10px 10px 20px #9e9e9e, -10px -10px 20px #ffffff;
+}
+
+/* Sign up form */
+.form {
+  padding: 25px 30px;
+}
+
+.form header {
+  font-size: 25px;
+  font-weight: 600;
+  border-bottom: 1px solid #292929;
+  padding-bottom: 10px;
+}
+.form form {
+  margin: 20px 0;
+}
+.form form .error-text {
+  color: #ff4242;
+  background-color: #ffadad;
+  padding: 8px 10px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ff4242;
+}
+
+.form form .name-details {
+  display: flex;
+}
+
+.form .name-details .field:first-child {
+  margin-right: 10px;
+}
+
+.form .name-details .field:last-child {
+  margin-left: 10px;
+}
+
+.form form .field {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.form form .field label {
+  margin-bottom: 2px;
+}
+
+.form form .field input {
+  outline: none;
+}
+
+.form form .input input {
+  height: 40px;
+  width: 100%;
+  font-size: 16px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form form .image input {
+  font-size: 17px;
+}
+
+.form form .button input {
+  margin-right: 13px;
+  height: 45px;
+  border: none;
+  font-size: 17px;
+  font-weight: 500;
+  background: #8fad88;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form form .field i {
+  color: #ccc;
+  position: absolute;
+  right: 15px;
+  top: 60%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.form .link {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 17;
+}
+
+.form form .button input:hover {
+  background: #6c9064;
+  margin-right: 13px;
+  height: 45px;
+  border: none;
+  font-size: 17px;
+  font-weight: 500;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all;
+  transition-duration: 500ms;
+}
+
+.form .link a:hover {
+  text-decoration: underline;
+}
