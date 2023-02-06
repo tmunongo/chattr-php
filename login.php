@@ -17,27 +17,27 @@
         <header>Welcome to Chattr Box</header>
         <form action="#">
           <div class="error-text">You have done something wrong</div>
-          <div>
-            <div class="field input">
-              <label for="">Email</label>
-              <input
-                type="text"
-                placeholder="john.doe@example.com"
-                name=""
-                id=""
-              />
-            </div>
-            <div class="field input">
-              <label for="">Password</label>
-              <input
-                type="password"
-                placeholder="Enter your password"
-                name=""
-                id=""
-              />
-              <i class="fa fa-eye" aria-hidden="true"></i>
-            </div>
+          <!-- <div> -->
+          <div class="field input">
+            <label for="">Email</label>
+            <input
+              type="text"
+              placeholder="john.doe@example.com"
+              name=""
+              id=""
+            />
           </div>
+          <div class="field input">
+            <label for="">Password</label>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              name=""
+              id=""
+            />
+            <i class="fas fa-eye" aria-hidden="true">sh</i>
+          </div>
+          <!-- </div> -->
           <div class="field button">
             <input type="submit" value="Create Account" />
           </div>
@@ -48,5 +48,7 @@
         </div>
       </section>
     </div>
+
+    <script src="assets/javascript/toggle-password.js" type="script"></script>
   </body>
 </html>
