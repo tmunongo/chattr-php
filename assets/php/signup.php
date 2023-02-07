@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once "config.php";
 
 $fname = mysqli_real_escape_string($conn, $_POST['fname']);
@@ -11,7 +12,7 @@ if (!empty($fname) && !empty($lname) && !empty($email) && !empty($password)) {
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
         // if email is valid
         // check if it already exists in the database
-        $sql = mysqli_query($conn, "SELECT $email FROM users WHERE email = '{$email}'");
+        $sql = mysqli_query($conn, "SELECT email FROM users WHERE email = '{$email}'");
         if (mysqli_num_rows($sql) > 0) {
             // if email already exists in the database
             echo "$email is already in use!";
@@ -36,12 +37,27 @@ if (!empty($fname) && !empty($lname) && !empty($email) && !empty($password)) {
                     $time = time();
                     $new_img_name = $time . $img_name;
                     //  move user uploaded image to folder
-                    if (move_uploaded_file($tmp_name, "images/.$new_img_name")) {
+                    if (move_uploaded_file($tmp_name, "../../images/" . $new_img_name)) {
                         // when move successful
                         // status once user has signed in
                         $status = "Active now";
                         // create a random ID
-                        $random_id = rand(time(), 100000000);
+                        $random_id = rand(time(), 10000000);
+                        // insert all user data inside table
+                        $insert_query = mysqli_query($conn, "INSERT INTO users (unique_id, fname, lname, email, password, img, status) 
+                                    VALUES ({$random_id}, '{$fname}', '{$lname}', '{$email}', '{$password}', '{$new_img_name}', '{$status}')");
+                        // if the data is successfully stored
+                        if ($insert_query) {
+                            $select_query = mysqli_query($conn, "SELECT * FROM users WHERE email = '{$email}'");
+                            if (mysqli_num_rows($select_query) > 0) {
+                                $row = mysqli_fetch_assoc($select_query);
+                                // use the user's unqiue id in our session
+                                $_SESSION['unique_id'] = $row['unqiue_id'];
+                                echo "success";
+                            }
+                        } else {
+                            echo "Something went wrong. Please try again.";
+                        }
                     };
                 } else {
                     echo "Please select a valid image file! - jpeg, jpg, png";
