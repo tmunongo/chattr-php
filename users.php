@@ -1,24 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+session_start();
+if (!isset($_SESSION['unique_id'])) {
+  header("location: ./login.php");
+}
+?>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chattr | Tawanda</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudfare.com/ajax/libs/font-awesome/5.12.2/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
-</head>
+<?php
+include_once "./header.php";
+?>
 
 <body>
   <div class="wrapper">
     <section class="users">
       <header>
+        <?php
+        include_once "./assets/php/config.php";
+        $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$_SESSION['unique_id']}");
+        if (mysqli_num_rows($sql) > 0) {
+          $row = mysqli_fetch_assoc($sql);
+        }
+        ?>
         <div class="content">
-          <img src="./assets/img/image.jpeg" alt="" />
+          <img src="./images/<?php echo $row['img'] ?>" alt="prof" />
           <div class="details">
-            <span> Clubber Lang </span>
-            <p>Active Now</p>
+            <span> <?php echo $row['fname'] . " " . $row['lname'] ?> </span>
+            <p><?php echo $row['status']; ?></p>
           </div>
         </div>
         <a href="#" class="logout">Logout</a>
@@ -31,69 +37,7 @@
         </button>
       </div>
       <div class="users-list">
-        <a href="#">
-          <div class="content">
-            <img src="./assets/img/image.jpeg" alt="" />
-            <!-- <img src="#" alt="" /> -->
-            <div class="details">
-              <span> Clubber Lang </span>
-              <p>Testing 1,2,3. Is this thing on?</p>
-            </div>
-          </div>
-          <div class="status-dot">
-            <i class="fas fa-circle"> </i>
-          </div>
-        </a>
-        <a href="#">
-          <div class="content">
-            <img src="./assets/img/image.jpeg" alt="" />
-            <!-- <img src="#" alt="" /> -->
-            <div class="details">
-              <span> Clubber Lang </span>
-              <p>Testing 1,2,3. Is this thing on?</p>
-            </div>
-          </div>
-          <div class="status-dot">
-            <i class="fas fa-circle"> </i>
-          </div>
-        </a>
-        <a href="#">
-          <div class="content">
-            <img src="./assets/img/image.jpeg" alt="" />
-            <!-- <img src="#" alt="" /> -->
-            <div class="details">
-              <span> Clubber Lang </span>
-              <p>Testing 1,2,3. Is this thing on?</p>
-            </div>
-          </div>
-          <div class="status-dot">
-            <i class="fas fa-circle"> </i>
-          </div>
-        </a>
-        <a href="#">
-          <div class="content">
-            <img src="./assets/img/image.jpeg" alt="" />
-            <div class="details">
-              <span> Clubber Lang </span>
-              <p>Testing 1,2,3. Is this thing on?</p>
-            </div>
-          </div>
-          <div class="status-dot">
-            <i class="fas fa-circle"> </i>
-          </div>
-        </a>
-        <a href="#">
-          <div class="content">
-            <img src="./assets/img/image.jpeg" alt="" />
-            <div class="details">
-              <span> Clubber Lang </span>
-              <p>Testing 1,2,3. Is this thing on?</p>
-            </div>
-          </div>
-          <div class="status-dot">
-            <i class="fas fa-circle">o</i>
-          </div>
-        </a>
+
       </div>
     </section>
   </div>

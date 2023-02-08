@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+session_start();
+if (isset($_SESSION['unique_id'])) {
+  header("location: ./users.php");
+}
+?>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chattr | Tawanda</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudfare.com/ajax/libs/font-awesome/5.12.2/css/all.min.css" />
-</head>
+<?php
+include_once "./header.php";
+?>
 
 <body>
   <div class="wrapper">
     <section class="form signup">
       <header>Welcome to Chattr Box</header>
-      <form action="#" enctype="multipart/form-data">
+      <form action="#" enctype="multipart/form-data" autocomplete="off">
         <div class="error-text">You have done something wrong</div>
         <div>
           <div class="name-details">
